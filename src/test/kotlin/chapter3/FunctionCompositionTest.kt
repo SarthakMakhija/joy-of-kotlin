@@ -4,7 +4,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.jupiter.api.Test
 
-class FunctionCompositionUnitTest {
+class FunctionCompositionTest {
 
     @Test
     fun `should compose functions f and g`() {
