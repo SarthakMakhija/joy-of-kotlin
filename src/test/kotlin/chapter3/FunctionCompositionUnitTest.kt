@@ -39,4 +39,15 @@ class FunctionCompositionUnitTest {
         val output = addAsFunction(2)(3)
         assertThat(output, `is`(5))
     }
+
+    @Test
+    fun `should compose functions f and g using a function type signature`() {
+        val f: (Int) -> Int = { it + 2 }
+        val g: (Int) -> Int = { it * 2 }
+
+        val fRoundG = composeAsFunction(f, g)
+        val output = fRoundG(5)
+
+        assertThat(output, `is`(12))
+    }
 }
