@@ -73,4 +73,17 @@ class FunctionCompositionUnitTest {
 
         assertThat(output, `is`('C'))
     }
+
+    @Test
+    fun `should apply same tax rate (using curry) to different prices`() {
+        val taxRate90Percent = addTax(rate = 0.9)
+        val price1 = 100.0
+        val price2 = 200.0
+
+        val taxRateApplied1 = taxRate90Percent(price1)
+        val taxRateApplied2 = taxRate90Percent(price2)
+
+        assertThat(taxRateApplied1, `is`(190.0))
+        assertThat(taxRateApplied2, `is`(380.0))
+    }
 }

@@ -19,3 +19,5 @@ class PolymorphicCurriedCompose<T, R, U> {
     //g takes T and returns R
     //f takes R returns U
 }
+
+fun addTax(rate: Double): (Double) -> Double = { price -> price + price * rate }
