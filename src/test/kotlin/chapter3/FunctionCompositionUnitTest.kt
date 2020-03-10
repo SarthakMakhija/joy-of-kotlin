@@ -27,4 +27,16 @@ class FunctionCompositionUnitTest {
 
         assertThat(output, `is`('C'))
     }
+
+    @Test
+    fun `should add 2 arguments by returning a function which works on second argument`() {
+        val output = add(2)(3)
+        assertThat(output, `is`(5))
+    }
+
+    @Test
+    fun `should add 2 arguments by returning a function which works on second argument using a function type signature`() {
+        val output = addAsFunction(2)(3)
+        assertThat(output, `is`(5))
+    }
 }
