@@ -12,3 +12,10 @@ val composeAsFunction: ((Int) -> Int, (Int) -> Int) -> (Int) -> Int = { f, g -> 
 
 val curriedCompose: ((Int) -> Int) -> ((Int) -> Int) -> (Int) -> Int = { f -> { g -> { x -> f(g(x)) } } }
 
+class PolymorphicCurriedCompose<T, R, U> {
+    val curriedCompose: ((R) -> U) -> ((T) -> R) -> (T) -> U = { f -> { g -> { x -> f(g(x)) } } }
+    //Read the function implementation from inside out
+    //x as a parameter of type T is passed to g
+    //g takes T and returns R
+    //f takes R returns U
+}

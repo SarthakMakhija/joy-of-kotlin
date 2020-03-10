@@ -62,4 +62,15 @@ class FunctionCompositionUnitTest {
 
         assertThat(output, `is`(12))
     }
+
+    @Test
+    fun `should polymorphically compose functions f and g using curried composition`() {
+        val f: (String) -> Char = { it.first() }
+        val g: (Int) -> String = { "Constant Function" }
+
+        val fRoundG = PolymorphicCurriedCompose<Int, String, Char>().curriedCompose(f)(g)
+        val output = fRoundG(5)
+
+        assertThat(output, `is`('C'))
+    }
 }
