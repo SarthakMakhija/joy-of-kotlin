@@ -86,4 +86,22 @@ class FunctionCompositionUnitTest {
         assertThat(taxRateApplied1, `is`(190.0))
         assertThat(taxRateApplied2, `is`(380.0))
     }
+
+    @Test
+    fun `should partially apply a curried function of two arguments to its first argument`() {
+        val f: (Int) -> (String) -> String = { i: Int -> { s: String -> s + i.toString() } }
+        val bArrowCFunction: (String) -> String = partialA(10, f)
+
+        val output = bArrowCFunction("Demo")
+        assertThat(output, `is`("Demo10"))
+    }
+
+    @Test
+    fun `should partially apply a curried function of two arguments to its second argument`() {
+        val f: (Int) -> (String) -> String = { i: Int -> { s: String -> s + i.toString() } }
+        val aArrowCFunction: (Int) -> String = partialB("Demo", f)
+
+        val output = aArrowCFunction(10)
+        assertThat(output, `is`("Demo10"))
+    }
 }
