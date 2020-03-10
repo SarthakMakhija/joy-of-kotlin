@@ -110,4 +110,13 @@ class FunctionCompositionTest {
         val output = curried<String, String, String, String>()("A")("B")("C")("D")
         assertThat(output, `is`("A, B, C, D"))
     }
+
+    @Test
+    fun `should curry a function of (A, B) to C`() {
+        val f: (Int, Int) -> Int = { a, b -> a + b }
+        val curried: (Int) -> (Int) -> Int = curry(f)
+
+        val output: Int = curried(10)(10)
+        assertThat(output, `is`(20))
+    }
 }
