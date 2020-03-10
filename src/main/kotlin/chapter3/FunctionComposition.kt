@@ -25,3 +25,6 @@ fun addTax(rate: Double): (Double) -> Double = { price -> price + price * rate }
 fun <A, B, C> partialA(a: A, f: (A) -> (B) -> C): (B) -> C = f(a)
 
 fun <A, B, C> partialB(b: B, f: (A) -> (B) -> C): (A) -> C = { a: A -> f(a)(b) }
+
+//fun <A, B, C, D> func(a: A, b: B, c: C, d: D): String = "$a, $b, $c, $d" which needs to be converted to a curried function
+fun <A, B, C, D> curried() = { p: A -> { q: B -> { r: C -> { s: D -> "$p, $q, $r, $s" } } } }

@@ -104,4 +104,10 @@ class FunctionCompositionTest {
         val output = aArrowCFunction(10)
         assertThat(output, `is`("Demo10"))
     }
+
+    @Test
+    fun `should return a curried function with a total of 4 parameters`() {
+        val output = curried<String, String, String, String>()("A")("B")("C")("D")
+        assertThat(output, `is`("A, B, C, D"))
+    }
 }
