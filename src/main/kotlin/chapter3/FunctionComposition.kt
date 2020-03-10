@@ -9,3 +9,6 @@ fun add(addend: Int): (Int) -> Int = { addend + it }
 val addAsFunction: (Int) -> (Int) -> Int = { addend -> { augend -> augend + addend } }
 
 val composeAsFunction: ((Int) -> Int, (Int) -> Int) -> (Int) -> Int = { f, g -> { f(g(it)) } }
+
+val curriedCompose: ((Int) -> Int) -> ((Int) -> Int) -> (Int) -> Int = { f -> { g -> { x -> f(g(x)) } } }
+

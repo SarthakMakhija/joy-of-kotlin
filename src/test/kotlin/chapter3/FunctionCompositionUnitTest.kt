@@ -50,4 +50,16 @@ class FunctionCompositionUnitTest {
 
         assertThat(output, `is`(12))
     }
+
+    @Test
+    fun `should compose functions f and g using curried composition`() {
+        val f: (Int) -> Int = { it + 2 }
+        val g: (Int) -> Int = { it * 2 }
+
+        val acceptsAnotherFunction: ((Int) -> Int) -> (Int) -> Int = curriedCompose(f)
+        val acceptsAnInt: (Int) -> Int = acceptsAnotherFunction(g)
+        val output = acceptsAnInt(5)
+
+        assertThat(output, `is`(12))
+    }
 }
